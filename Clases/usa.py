@@ -65,4 +65,26 @@ class Housing:
     plt.show()
 
 #añado una columna al Dataset con los clusters para analizarlos posteriormente
+  def kmeans (self, n_clusters):
+    kmeans = kmeans(n_clusters= 4).fit(df)
+    labels = kmeans.predict(df)
+    df["Clusters"] = labels
+    return df
+  
+#ahora muestro una gráfica de los clusters 
+  def grafica_cluster(self,df):
+    colores = ["yellow", "blue", "red", "green"]
+    asignar = []
+    kmeans = kmeans(n_clusters= 4).fit(df)
+    labels = kmeans.predict(df)
+    for row in labels:
+      asignar.append(colores[row])
+    plt.xlabel("Precio")
+    plt.ylabel("Número de habitaciones")
+    plt.title("Número de habitaciones stocks k-means clustering")
+    plt.scatter(df["Precio"], df["Número de habitaciones"], c=asignar, s=50)
+    plt.show()
+    
+
+
 
