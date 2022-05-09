@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import csv
+import os
 
 
 
@@ -28,35 +30,30 @@ import math
 
 
 
-viviendas = pd.read_csv("USA_Housing" , sep = "\t")
-viviendas.rename(colums ={"Avg. Area Income" : "Área de ingreso" , "Avg. Area House Age" : "Antiguedad de las casas" , "Avg. Area Number of Rooms" : "Número de habitaciones", "Avg. Area Number of Bedrooms" : "Número de dormitorios", "Area Population" : "Población del Área", "Price" : "Precio" , "Address" : "Dirección" }, inplace=True)
-viviendas =viviendas.dropna()
+df = pd.read_csv("USA_Housing" , sep = "\t")
 
-class usa:
-    
+df.rename(colums ={"Avg. Area Income" : "Área de ingreso" , "Avg. Area House Age" : "Antiguedad de las casas" , "Avg. Area Number of Rooms" : "Número de habitaciones", "Avg. Area Number of Bedrooms" : "Número de dormitorios", "Area Population" : "Población del Área", "Price" : "Precio" , "Address" : "Dirección" }, inplace=True)
+df =df.dropna()
 
-    def diagrama_de_sectores (viviendas, "Área de ingreso"):
-        fig, ax = plt.subplots()
-        viviendas[viviendas."Área de ingreso"].plot(kind = "pie" , autopct = "%1.0f%%" , ax = ax)
-        ax.set_title("Diagrama de sectores de USA housing" , loc = "center" , fontdict ={"fontsize": 12, "fontweight": "bold", "color" : "tab: green"})
-        ax.set_ylabel(" ")
-        plt.savefig("Diagrama_de_sectores_USA_Housing.png" , bbox_inches ="tight")
-        return
-    
-    def diagrama_de_barras(viviendas):
-        fig, ax = plt.subplots()
-        viviendas.plot(kind= "bar")
-        ax.set_title("Diagrama de barras USA Housing" , loc = "center" , fontdict = {"fontsize": 12, "fontweight": "bold" , "color" : "tab: green"})
-        ax.grid(axis = "y" , color = "lightgray" , linestyle = "dashed")
-        plt.savefig("Diagrama_de_barras.png" , bbox_inches = "tight")
-        return
-    
-    def grafico_de_dispersion(viviendas):
-        fig, ax = plt.subplots()
-        viviendas_grafico = viviendas[viviendas.isin(viviendas)]
-        ax.scatter(viviendas["Área de ingreso"] , viviendas["Antiguedad de las casas"])
-        ax.set_title("Diagrama de dispersión del Área de ingreso con respecto a la antiguedad de las casas", loc = "center", fontdict = {'fontsize':12, 'fontweight':'bold', 'color':'tab:blue'})
-        ax.set_xlabel("Área de ingreso")
-        ax.set_ylabel("Antiguedad de las casas")
-        plt.savefig("Diagrama_de_dispersión.png" , bbox_inches = "tight")
-        return
+def diagrama_de_barras(self, df, columna1, columna2):
+  columna1 = pd.DataFrame(df["Precio"])
+  columna2 = pd.DataFrame(df["Antiguedad de las casas"])
+  plt.xlabel("Precio")
+  plt.ylabel("Antiguedad de las casas")
+
+  self.df[columna1, columna2].plot(kind="bar", width= 0.5, color= "red" , title="Precio vs Antiguedad de las casas")
+  plt.savefig("Precio/Antiguedad_casas.png")
+  plt.show()
+
+def diagrama_de_barras_2 (self, df, columna3, columna4):
+  columna3 = pd.DataFrame(df["Número de habitaciones"])
+  columna4 = pd.DataFrame(df["Precio"])
+  plt.xlabel("Precio")
+  plt.ylabel("Número de habitaciones")
+  self.df[columna3 , columna4].plot(kind="bar", width= 0.5, color= "blue" , title="Precio vs Número de habitaciones")
+  plt.savefig("Precio/Número_habitaciones.png")
+  plt.show()
+
+
+
+
