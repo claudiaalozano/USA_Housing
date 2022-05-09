@@ -1,6 +1,6 @@
 # USA_Housing
 
-Mi dirección de Github es: (https://github.com/claudiaalozano/USA_Housing.git)
+Mi dirección de Github es: [https://github.com/claudiaalozano/USA_Housing.git]
 
 El código empleado es:
 ```
