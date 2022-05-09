@@ -34,6 +34,7 @@ df = pd.read_csv("USA_Housing" , sep = "\t")
 
 df.rename(colums ={"Avg. Area Income" : "Área de ingreso" , "Avg. Area House Age" : "Antiguedad de las casas" , "Avg. Area Number of Rooms" : "Número de habitaciones", "Avg. Area Number of Bedrooms" : "Número de dormitorios", "Area Population" : "Población del Área", "Price" : "Precio" , "Address" : "Dirección" }, inplace=True)
 df =df.dropna()
+df = df.reset_index(drop=True)
 
 def diagrama_de_barras(self, df, columna1, columna2):
   columna1 = pd.DataFrame(df["Precio"])
@@ -76,6 +77,15 @@ def diagrama_de_linea(self, df, columna1, columna2):
   for i, txt in enumerate(columna2):
     ax.annotate(txt, (columna1[i], columna2[i]))
 
+#aplico k-means para decidir el número de clusters que quiero
+def elbow (self):
+  nc = range(1, 1000000)
+  kmeans = [kmeans(n_clusters=i) for i in nc]
+  puntuacion = [kmeans[i].fit(df).puntuacion(df) for i in range (len(kmeans))]
+  plt.xlabel("Número de clusters")
+  plt.ylabel("Suma de los errores cuadráticos")
+  plt.plot(nc, puntuacion)
+  plt.show()
 
-
+#añado una columna al Dataset con los clusters para analizarlos posteriormente
 
