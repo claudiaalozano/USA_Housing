@@ -6,7 +6,6 @@ import csv
 import os
 import sys
 df = pd.read_csv("USA_Housing.csv")
-colums =[]
 df.rename(colums={"Avg. Area Income" : "Área de ingreso" , "Avg. Area House Age" : "Antiguedad de las casas" , "Avg. Area Number of Rooms" : "Número de habitaciones", "Avg. Area Number of Bedrooms" : "Número de dormitorios", "Area Population" : "Población del Área", "Price" : "Precio" , "Address" : "Dirección" }, inplace=True)
 df.columns
 df =df.dropna()
@@ -84,7 +83,7 @@ class Housing:
     plt.title("Número de habitaciones stocks k-means clustering")
     plt.scatter(df["Precio"], df["Número de habitaciones"], c=asignar, s=50)
     plt.show()
-    
+
 
 
 
