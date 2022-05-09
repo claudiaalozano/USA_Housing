@@ -64,7 +64,17 @@ def diagrama_de_dispersion(self, df, variable1, variable2):
   plt.savefig("Poplación_del_Área/Número_habitaciones.png")
   plt.show()
 
-def diagrama_de_sectores(self, df,):
+
+def diagrama_de_linea(self, df, columna1, columna2):
+  columna1 = pd.DataFrame(df["Precio"])
+  columna2 = pd.DataFrame(df["Población del Área"])
+  plt.xlabel("Precio")
+  plt.ylabel("Población del Área")
+  plt.legend(["Precio", "Población del Área"], loc=1)
+  self.df[columna1, columna2].plot(kind="line", width= 0.5, color= "red" , title="Precio vs Antiguedad de las casas")
+  ax= plt.subplot()
+  for i, txt in enumerate(columna2):
+    ax.annotate(txt, (columna1[i], columna2[i]))
 
 
 
