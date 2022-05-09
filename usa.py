@@ -40,7 +40,7 @@ def diagrama_de_barras(self, df, columna1, columna2):
   columna2 = pd.DataFrame(df["Antiguedad de las casas"])
   plt.xlabel("Precio")
   plt.ylabel("Antiguedad de las casas")
-
+  plt.legend(["Precio", "Antiguedad de las casas"], loc=1)
   self.df[columna1, columna2].plot(kind="bar", width= 0.5, color= "red" , title="Precio vs Antiguedad de las casas")
   plt.savefig("Precio/Antiguedad_casas.png")
   plt.show()
@@ -53,6 +53,18 @@ def diagrama_de_barras_2 (self, df, columna3, columna4):
   self.df[columna3 , columna4].plot(kind="bar", width= 0.5, color= "blue" , title="Precio vs Número de habitaciones")
   plt.savefig("Precio/Número_habitaciones.png")
   plt.show()
+
+
+def diagrama_de_dispersion(self, df, variable1, variable2):
+  variable1= pd.DataFrame(df["Poplación del Área"])
+  variable2= pd.DataFrame(df["Número de habitaciones"])
+  plt.xlabel("Número de habitaciones")
+  plt.ylabel("Poplación del Área")
+  my_plot = self.df[variable1, variable2].plot(kind="scatter", color= "green" , title="Poplación del Área vs Número de habitaciones")
+  plt.savefig("Poplación_del_Área/Número_habitaciones.png")
+  plt.show()
+
+def diagrama_de_sectores(self, df,):
 
 
 
